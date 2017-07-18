@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   has_many :order_items
-  belongs_to :customer
+  belongs_to :customer, optional: true
 
   accepts_nested_attributes_for :order_items
  
@@ -22,8 +22,9 @@ class Order < ApplicationRecord
   def update_stock_quantity
     self.order_items.each do |item|
       if item.stock
-        if self.order_status == "Delivered"
+        if self.order_status == "Delivered" && self.stock_updated == false
           item.stock.update_attribute(:quantity, item.stock.quantity - item.quantity)
+          self.update_column(:stock_updated, true)
         end
       end
     end

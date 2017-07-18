@@ -21,7 +21,7 @@
           %table.table
             - order.order_items.each do |item|
               %tr
-                %td= item.stock.full_name
+                %td= item.stock.try(:full_name)
                 %td Product: #{ item.product }
                 %td Model: #{item.model_no }
                 %td Quantity: #{item.quantity}
