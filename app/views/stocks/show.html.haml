@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product name:
+  = @stock.product_name
+%p
+  %b Modal number:
+  = @stock.modal_number
+%p
+  %b Quantity:
+  = @stock.quantity
+
+= link_to 'Edit', edit_stock_path(@stock)
+\|
+= link_to 'Back', stocks_path

@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require turbolinks
+//= require tether.min
 //= require bootstrap-sprockets
+//= require select2
+//= require jquery_nested_form
 //= require_tree .

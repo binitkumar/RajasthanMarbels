@@ -38,3 +38,8 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rubocop'
 end
+gem "select2-rails"
+gem 'jquery-datatables-rails', '~> 3.4.0'
+gem "nested_form"
+gem 'bootstrap-glyphicons'
+gem 'simple_form'

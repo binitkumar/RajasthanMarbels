@@ -1,0 +1,50 @@
+.row
+  .col-md-12
+    %h3 Order Details
+
+.row
+  .col-md-6
+    %p
+      %b Order type:
+      = @order.order_type
+    %p
+      %b Customer name:
+      = @order.customer_name
+    %p
+      %b Customer address:
+      = simple_format @order.customer_address
+    %p
+      %b Customer contact no:
+      = @order.customer_contact_no
+  .col-md-6
+    %p
+      %b Order status:
+      = @order.order_status
+    %p
+      %b Advance amount:
+      = @order.advance_amount
+    %p
+      %b Mediator name:
+      = @order.midiator_name
+.row
+  .col-md-12
+    %p
+      %b Items:
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th Stock
+            %th Product
+            %th Model
+            %th Quantity
+        %tbody
+          - @order.order_items.each do |item|
+            %tr
+              %td= item.stock.full_name
+              %td #{ item.product }
+              %td #{item.model_no }
+              %td #{item.quantity}
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

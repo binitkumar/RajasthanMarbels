@@ -1,0 +1,22 @@
+%h1 Listing stocks
+.float-right
+  = link_to 'New Stock', new_stock_path, class: 'btn btn-primary'
+
+%table.table.table-bordered.table-stripped.datatable
+  %thead
+    %tr
+      %th Product name
+      %th Modal number
+      %th Quantity
+      %th
+      %th
+
+  %tbody
+    - @stocks.each do |stock|
+      %tr
+        %td= link_to stock.product_name, stock
+        %td= stock.modal_number
+        %td= stock.quantity
+        %td= link_to 'Edit', edit_stock_path(stock)
+        %td= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }
+

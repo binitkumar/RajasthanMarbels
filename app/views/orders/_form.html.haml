@@ -1,0 +1,63 @@
+= nested_form_for @order do |f|
+  - if @order.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      %ul
+        - @order.errors.full_messages.each do |message|
+          %li= message
+  .row
+    .col-md-6
+      .field
+        = f.label :order_type
+        = f.text_field :order_type, class: 'form-control'
+      .field
+        = f.label :customer_name
+        = f.text_field :customer_name, class: 'form-control'
+      .field
+        = f.label :customer_address
+        = f.text_area :customer_address, class: 'form-control'
+      .field
+        = f.label :customer_contact_no
+        = f.text_field :customer_contact_no, class: 'form-control'
+    .col-md-6
+      .field
+        = f.label :order_status
+        = f.select :order_status, options_for_select(Order::STATUSES), {}, class: 'form-control' 
+      .field
+        = f.label :advance_amount
+        = f.text_field :advance_amount, class: 'form-control'
+      .field
+        = f.label :delivery_date
+        = f.date_field :delivery_date, class: 'form-control'
+      .field
+        = f.label :mediator_name
+        = f.text_field :midiator_name, class: 'form-control'
+  = f.fields_for :order_items do |item|
+    .order-items-section
+      .row
+        .col-md-3
+          .field
+            = item.label :stock
+            = item.select :stock_id, options_for_select([["Click to select", nil]] + Stock.all.collect{|s| ["#{s.product_name} (#{s.modal_number})", s.id]}, item.object.stock.try(:id)), {}, class: 'form-control select2-dropdown'
+        .col-md-3
+          .field
+            = item.label :product
+            = item.text_field :product, class: 'form-control'
+        .col-md-3
+          .field
+            = item.label :model_no
+            = item.text_field :model_no, class: 'form-control'
+        .col-md-2
+          .field
+            = item.label :quantity
+            = item.number_field :quantity, class: 'form-control'
+        .col-md-1
+          = item.link_to_remove class: 'btn btn-sm btn-danger' do
+            %i.glyphicon.glyphicon-remove-sign
+  %br/
+  %br/
+  = f.link_to_add "Add item", :order_items, class: 'btn btn-primary'
+  %br/
+  %br/
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'

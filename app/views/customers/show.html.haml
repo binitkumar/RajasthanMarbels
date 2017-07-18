@@ -1,0 +1,14 @@
+%h5 #{@customer.name}'s Details
+%p
+  %b Address:
+  = simple_format @customer.address
+%p
+  %b Phone no:
+  = @customer.phone_no
+%p
+  %h3 Orders
+  = render "orders/orders_listing", orders: @customer.orders
+ 
+= link_to 'Edit', edit_customer_path(@customer)
+\|
+= link_to 'Back', customers_path

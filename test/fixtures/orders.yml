@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_type: MyString
+  customer_name: MyString
+  customer_address: MyText
+  customer_contact_no: MyString
+  product: MyString
+  model_no: MyString
+  order_status: MyString
+  advance_amount: 9.99
+  midiator_name: MyString
+
+two:
+  order_type: MyString
+  customer_name: MyString
+  customer_address: MyText
+  customer_contact_no: MyString
+  product: MyString
+  model_no: MyString
+  order_status: MyString
+  advance_amount: 9.99
+  midiator_name: MyString

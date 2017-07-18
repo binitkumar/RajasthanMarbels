@@ -1,0 +1,29 @@
+<div class="container p-t-md">
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#new_orders">New Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#delivered"> Delivered </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#pending">Pending</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="new_orders">
+                  <%= render "orders_listing", orders: @new_orders %>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in" id="delivered">
+                  <%= render "orders_listing", orders: @delivered_orders %>
+                </div>
+                 <div role="tabpanel" class="tab-pane fade in" id="pending">
+                  <%= render "orders_listing", orders: @pending_orders %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

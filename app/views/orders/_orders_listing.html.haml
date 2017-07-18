@@ -1,0 +1,33 @@
+%table.table.table-bordered.table-stripped.datatable
+  %thead
+    %tr
+      %th Delivery Date 
+      %th Order type
+      %th Customer name
+      %th Customer contact no
+      %th Stock / Product / Model No.
+      %th Advance amount
+      %th
+      %th
+
+  %tbody
+    - orders.each do |order|
+      %tr
+        %td= link_to order.delivery_date, order
+        %td= order.order_type
+        %td= order.customer_name
+        %td= order.customer_contact_no
+        %td
+          %table.table
+            - order.order_items.each do |item|
+              %tr
+                %td= item.stock.full_name
+                %td Product: #{ item.product }
+                %td Model: #{item.model_no }
+                %td Quantity: #{item.quantity}
+        %td= order.advance_amount
+        %td
+          = link_to edit_order_path(order), class: 'btn btn-primary btn-sm' do
+            %i.glyphicon.glyphicon-pencil
+        %td= link_to 'X', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+

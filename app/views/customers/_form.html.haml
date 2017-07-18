@@ -1,0 +1,6 @@
+= simple_form_for @customer do |f|
+  = f.input :name
+  = f.input :address
+  = f.input :phone_no
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'
