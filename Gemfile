@@ -6,6 +6,7 @@ end
 ruby '2.3.3'
 gem 'rails', '~> 5.0.4'
 gem 'sqlite3'
+gem 'mysql2'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -43,3 +44,4 @@ gem 'jquery-datatables-rails', '~> 3.4.0'
 gem "nested_form"
 gem 'bootstrap-glyphicons'
 gem 'simple_form'
+gem 'passenger'
