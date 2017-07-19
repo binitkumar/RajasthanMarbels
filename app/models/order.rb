@@ -24,9 +24,9 @@ class Order < ApplicationRecord
       if item.stock
         if self.order_status == "Delivered" && self.stock_updated == false
           item.stock.update_attribute(:quantity, item.stock.quantity - item.quantity)
-          self.update_column(:stock_updated, true)
         end
       end
     end
+    self.update_column(:stock_updated, true)
   end
 end
