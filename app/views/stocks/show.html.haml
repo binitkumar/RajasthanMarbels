@@ -1,14 +1,13 @@
-%p#notice= notice
-
-%p
-  %b Product name:
-  = @stock.product_name
-%p
-  %b Modal number:
-  = @stock.modal_number
+%h3 #{@stock.product_name } ( #{@stock.modal_number} ) Details
 %p
   %b Quantity:
   = @stock.quantity
+%p
+  %b Purchase price:
+  = @stock.purchase_price
+%p
+  %b Sale price:
+  = @stock.sale_price
 
 = link_to 'Edit', edit_stock_path(@stock)
 \|
