@@ -1,0 +1,22 @@
+= simple_nested_form_for(@stock_collection) do |f|
+  = f.error_notification
+
+  = f.fields_for :stocks do |item|
+    .stocks-section
+      .row
+        .col-md-2= item.input :product_name
+        .col-md-2= item.input :modal_number
+        .col-md-2= item.input :quantity
+        .col-md-2= item.input :purchase_price
+        .col-md-1= item.input :sale_price
+        .col-md-2= item.input :minimum_stock
+        .col-md-1
+          = item.link_to_remove class: 'btn btn-sm btn-danger' do
+            %i.glyphicon.glyphicon-remove-sign
+  %br/
+  %br/
+  = f.link_to_add "Add item", :stocks, class: 'btn btn-primary'
+  %br/
+  %br/
+  .form-actions
+    = f.button :submit

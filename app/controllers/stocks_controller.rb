@@ -8,6 +8,10 @@ class StocksController < ApplicationController
     @stocks = Stock.all
   end
 
+  def low_stock
+    @stocks = Stock.where("quantity < minimum_stock")
+  end
+
   # GET /stocks/1
   # GET /stocks/1.json
   def show

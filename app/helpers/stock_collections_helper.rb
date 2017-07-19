@@ -1,0 +1,2 @@
+module StockCollectionsHelper
+end

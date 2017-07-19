@@ -1,0 +1,21 @@
+%h1 Listing stock_collections
+
+%table
+  %thead
+    %tr
+      %th Addition type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @stock_collections.each do |stock_collection|
+      %tr
+        %td= stock_collection.addition_type
+        %td= link_to 'Show', stock_collection
+        %td= link_to 'Edit', edit_stock_collection_path(stock_collection)
+        %td= link_to 'Destroy', stock_collection, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Stock collection', new_stock_collection_path

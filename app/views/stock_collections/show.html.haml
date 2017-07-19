@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Addition type:
+  = @stock_collection.addition_type
+
+= link_to 'Edit', edit_stock_collection_path(@stock_collection)
+\|
+= link_to 'Back', stock_collections_path
