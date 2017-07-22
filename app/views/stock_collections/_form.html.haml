@@ -6,9 +6,10 @@
       .row
         .col-md-2= item.input :product_name
         .col-md-2= item.input :modal_number
-        .col-md-2= item.input :quantity
-        .col-md-2= item.input :purchase_price
-        .col-md-1= item.input :sale_price
+        .col-md-1= item.input :quantity
+        .col-md-1= item.input :pieces
+        .col-md-1= item.input :mrp
+        .col-md-2= item.input :sale_price
         .col-md-2= item.input :minimum_stock
         .col-md-1
           = item.link_to_remove class: 'btn btn-sm btn-danger' do

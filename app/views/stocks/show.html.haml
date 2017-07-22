@@ -1,13 +1,60 @@
-%h3 #{@stock.product_name } ( #{@stock.modal_number} ) Details
-%p
-  %b Quantity:
-  = @stock.quantity
-%p
-  %b Purchase price:
-  = @stock.purchase_price
-%p
-  %b Sale price:
-  = @stock.sale_price
+.row
+  .col-md-12
+    %h3 #{@stock.product_name } ( #{@stock.modal_number} ) Details
+    %p
+      %b Quantity:
+      = @stock.quantity
+    %p
+      %b MRP:
+      = @stock.mrp
+    %p
+      %b Sale price:
+      = @stock.sale_price
+
+.row
+  - orders = @stock.order_items.collect(&:order).uniq
+  .col-md-12
+    %p
+      %b Items:
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th Delivery Date 
+            %th Order type
+            %th Customer name
+            %th Customer contact no
+            %th Stock / Product / Model No.
+            %th Advance amount
+            %th
+            %th
+        %tbody
+          - orders.each do |order|
+            %tr
+              %td= link_to order.delivery_date, order
+              %td= order.order_type
+              %td= order.customer_name
+              %td= order.customer_contact_no
+              %td
+                %table.table
+                  - if order.order_items.any?
+                    %tr
+                      %td Stock
+                      %td Product
+                      %td Model No.
+                      %td Quantity
+                      %td Pieces
+                  - order.order_items.each do |item|
+                    %tr
+                      %td= item.stock.try(:full_name)
+                      %td #{ item.product }
+                      %td #{item.model_no }
+                      %td #{item.quantity}
+                      %td #{item.pieces}
+              %td= order.advance_amount
+              %td
+                = link_to edit_order_path(order), class: 'btn btn-primary btn-sm' do
+                  %i.glyphicon.glyphicon-pencil
+              %td= link_to 'X', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
 = link_to 'Edit', edit_stock_path(@stock)
 \|

@@ -37,6 +37,7 @@
             %th Product
             %th Model
             %th Quantity
+            %th Pieces
         %tbody
           - @order.order_items.each do |item|
             %tr
@@ -44,6 +45,7 @@
               %td #{ item.product }
               %td #{item.model_no }
               %td #{item.quantity}
+              %td #{item.pieces}
 
 = link_to 'Edit', edit_order_path(@order)
 \|

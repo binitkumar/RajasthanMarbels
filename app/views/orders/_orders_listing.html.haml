@@ -19,12 +19,19 @@
         %td= order.customer_contact_no
         %td
           %table.table
+            - if order.order_items.any?
+              %td Stock
+              %td Product
+              %td Model
+              %td Quantity
+              %td Pieces
             - order.order_items.each do |item|
               %tr
                 %td= item.stock.try(:full_name)
-                %td Product: #{ item.product }
-                %td Model: #{item.model_no }
-                %td Quantity: #{item.quantity}
+                %td #{ item.product }
+                %td #{item.model_no }
+                %td #{item.quantity}
+                %td #{item.pieces}
         %td= order.advance_amount
         %td
           = link_to edit_order_path(order), class: 'btn btn-primary btn-sm' do

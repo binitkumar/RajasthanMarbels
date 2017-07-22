@@ -69,6 +69,6 @@ class StockCollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_collection_params
-      params.require(:stock_collection).permit(:addition_type, stocks_attributes: [:id, :product_name, :modal_number, :quantity, :purchase_price, :sale_price, :minimum_stock, :_destroy])
+      params.require(:stock_collection).permit(:addition_type, stocks_attributes: [:id, :product_name, :modal_number, :quantity, :purchase_price, :sale_price, :minimum_stock, :mrp, :pieces, :_destroy])
     end
 end
