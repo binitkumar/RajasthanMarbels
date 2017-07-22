@@ -6,6 +6,10 @@ class StocksController < ApplicationController
   # GET /stocks.json
   def index
     @stocks = Stock.all
+
+    @models = @stocks.collect(&:modal_number).uniq
+
+    @stocks = @stocks.where(modal_number: params[:model_no]) if params[:model_no]
   end
 
   def low_stock

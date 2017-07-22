@@ -7,6 +7,9 @@
   .col-md-9
     .float-right
       = link_to 'New Stock', new_stock_path, class: 'btn btn-primary'
+    %h3 List by model:
+    - @models.each do |mod|
+      = link_to mod, stocks_path(model_no: mod), class: "btn btn-sm #{'btn-primary' if params[:model_no] == mod}"
     %table.table.table-bordered.table-stripped.datatable
       %thead
         %tr
