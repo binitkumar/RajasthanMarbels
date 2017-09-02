@@ -23,9 +23,9 @@ class Order < ApplicationRecord
     self.order_items.each do |item|
       if item.stock
         if self.order_status == "Delivered" && self.stock_updated == false
-          item.stock.update_attribute(:quantity, item.stock.quantity - item.quantity)
+          item.stock.update_attribute(:quantity, item.stock.quantity.to_i - item.quantity.to_i)
           if item.pieces && item.stock.pieces
-            item.stock.update_attribute(:pieces, item.stock.pieces - item.pieces)
+            item.stock.update_attribute(:pieces, item.stock.pieces.to_i - item.pieces.to_i)
           end
         end
       end

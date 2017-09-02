@@ -3,5 +3,7 @@ $(document).on 'turbolinks:load', ->
   $('.datatable').DataTable()
 
   $('form').on 'nested:fieldAdded', (event) ->
-    console.log '-----------------'
-    $('.select2-dropdown').select2 theme: 'bootstrap'
+    $('.select2-dropdown').select2
+      theme: 'bootstrap'
+      maximumSelectionSize: 5
+      minimumInputLength: 3
