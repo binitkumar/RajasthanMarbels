@@ -20,6 +20,7 @@ class Order < ApplicationRecord
   end
 
   def update_stock_quantity
+    current_stock_update = false
     self.order_items.each do |item|
       if item.stock
         if self.order_status == "Delivered" && self.stock_updated == false
@@ -27,9 +28,10 @@ class Order < ApplicationRecord
           if item.pieces && item.stock.pieces
             item.stock.update_attribute(:pieces, item.stock.pieces.to_i - item.pieces.to_i)
           end
+          current_stock_update = true
         end
       end
     end
-    self.update_column(:stock_updated, true)
+    self.update_column(:stock_updated, true) if current_stock_update
   end
 end
